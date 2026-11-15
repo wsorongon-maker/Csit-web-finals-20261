@@ -49,7 +49,7 @@ a{color:var(--cyan)}
 .type::after{content:"█";margin-left:.2rem;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
-.btn{display:inline-block;padding:.7rem 1.3rem;text-decoration:none;font:500 .95rem var(--head);border:1px solid var(--cyan);color:var(--cyan);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);transition:background .2s,color .2s,box-shadow .2s;cursor:pointer;background:none}
+.btn{display:inline-block;padding:.7rem 1.3rem;text-decoration:none;font:500 .95rem var(--head);border:1px solid var(--cyan);color:var(--cyan);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
 .btn:hover,.btn.solid{background:var(--cyan);color:#001318;box-shadow:0 0 22px rgba(0,240,255,.55)}
 .btn.solid:hover{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 22px rgba(255,43,214,.55)}
 
@@ -86,6 +86,87 @@ form .btn{justify-self:start}
 #msg{margin:0;min-height:1.5rem;color:#2dff8f}
 footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+@media print {
+  @page { margin: 0.6in; }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  body::after { display: none !important; }
+
+  .nav,
+  .btns,
+  .status,
+  form,
+  #msg,
+  .card span,
+  .fill,
+  .track {
+    display: none !important;
+  }
+
+  .wrap {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .hero,
+  section,
+  footer {
+    border-top: 1px solid #888 !important;
+    padding: 1rem 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .hero {
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .glitch,
+  .type,
+  h2,
+  .sys dt,
+  .sys dd,
+  .card h3,
+  .card p,
+  .about p,
+  footer {
+    color: #111 !important;
+    text-shadow: none !important;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none !important;
+  }
+
+  .sys,
+  .card {
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    color: #111 !important;
+  }
+
+  .sys .bar,
+  .sys .bar i {
+    background: transparent !important;
+    border-color: #999 !important;
+  }
+
+  a {
+    color: #111 !important;
+    text-decoration: underline !important;
+  }
+}
 </style>
 </head>
 <body>
