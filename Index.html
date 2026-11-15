@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wyndell Storm Sorongon – BSIT 1-D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#05070d; --panel:#0b1120; --ink:#d8e6ff; --muted:#7f93b5; --cyan:#00f0ff; --pink:#ff2bd6; --line:#17314d;
+  --head:'Orbitron','Arial Black',Arial,sans-serif; --mono:'Share Tech Mono','Courier New',monospace;
+  color-scheme:dark; box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem;background:var(--bg)}
+body{margin:0;color:var(--ink);font:1.05rem/1.65 var(--mono);
+  background:
+   linear-gradient(rgba(0,240,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+   linear-gradient(90deg,rgba(0,240,255,.05) 1px,transparent 1px) 0 0/44px 44px,
+   radial-gradient(ellipse at 20% -10%,rgba(0,240,255,.14),transparent 55%),
+   radial-gradient(ellipse at 100% 30%,rgba(255,43,214,.10),transparent 50%),var(--bg);
+  background-attachment:fixed}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(transparent 0 2px,rgba(0,0,0,.18) 2px 3px)}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 1.25rem}
+
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(5,7,13,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;height:3.5rem}
+.logo{font:800 1rem var(--head);color:var(--cyan);text-decoration:none;text-shadow:0 0 12px rgba(0,240,255,.7)}
+.nav nav{display:flex;gap:1.2rem}
+.nav nav a{color:var(--muted);text-decoration:none;font-size:.95rem}
+.nav nav a:hover{color:var(--cyan)}
+@media(max-width:560px){.nav nav a:nth-child(n+3){display:none}}
+
+.hero{padding:clamp(3rem,9vw,6.5rem) 0 clamp(2.5rem,6vw,4rem)}
+.status{display:inline-flex;gap:.6rem;align-items:center;border:1px solid var(--line);padding:.3rem .8rem;color:var(--muted);font-size:.9rem;margin-bottom:1.5rem}
+.status::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:#2dff8f;box-shadow:0 0 10px #2dff8f}
+.glitch{position:relative;margin:0;font:800 clamp(2.2rem,9vw,5.8rem)/1.02 var(--head);letter-spacing:.01em;text-shadow:0 0 24px rgba(0,240,255,.45)}
+.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;overflow:hidden}
+.glitch::before{color:var(--cyan);left:3px;clip-path:inset(0 0 100% 0);animation:g1 5s infinite steps(1)}
+.glitch::after{color:var(--pink);left:-3px;clip-path:inset(0 0 100% 0);animation:g2 5s infinite steps(1)}
+@keyframes g1{0%,92%{clip-path:inset(0 0 100% 0)}93%{clip-path:inset(10% 0 55% 0)}95%{clip-path:inset(60% 0 12% 0)}97%,100%{clip-path:inset(0 0 100% 0)}}
+@keyframes g2{0%,92%{clip-path:inset(0 0 100% 0)}94%{clip-path:inset(45% 0 30% 0)}96%{clip-path:inset(5% 0 75% 0)}98%,100%{clip-path:inset(0 0 100% 0)}}
+.type{margin:1.4rem 0 0;font-size:clamp(1rem,3vw,1.3rem);color:var(--cyan);min-height:1.7em}
+.type::after{content:"█";margin-left:.2rem;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.btn{display:inline-block;padding:.7rem 1.3rem;text-decoration:none;font:500 .95rem var(--head);border:1px solid var(--cyan);color:var(--cyan);clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px)}
+.btn:hover,.btn.solid{background:var(--cyan);color:#001318;box-shadow:0 0 22px rgba(0,240,255,.55)}
+.btn.solid:hover{background:var(--pink);border-color:var(--pink);color:#fff;box-shadow:0 0 22px rgba(255,43,214,.55)}
+
+section{padding:clamp(2.5rem,6vw,4.5rem) 0;border-top:1px solid var(--line)}
+h2{margin:0 0 1.6rem;font:800 clamp(1.4rem,4vw,2rem) var(--head);color:var(--ink)}
+h2::before{content:"> ";color:var(--pink)}
+
+.sys{max-width:36rem;background:var(--panel);border:1px solid var(--line);box-shadow:0 0 30px rgba(0,240,255,.08)}
+.sys .bar{padding:.5rem 1rem;border-bottom:1px solid var(--line);color:var(--muted);font-size:.85rem;display:flex;gap:.4rem;align-items:center}
+.sys .bar i{width:.6rem;height:.6rem;border-radius:50%;background:var(--pink)}
+.sys .bar i:nth-child(2){background:#ffd23f}.sys .bar i:nth-child(3){background:#2dff8f;margin-right:.5rem}
+.sys dl{margin:0;padding:1rem 1.2rem;display:grid;grid-template-columns:auto 1fr;gap:.5rem 1.2rem}
+.sys dt{color:var(--muted)}
+.sys dd{margin:0;color:var(--cyan)}
+
+.about p{margin:0;max-width:40rem;font-size:1.15rem}
+.cards{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);padding:1.3rem;transition:border-color .2s,box-shadow .2s,transform .2s}
+.card h3{margin:0 0 .5rem;font:800 1.05rem var(--head)}
+.card p{margin:0 0 .9rem;color:var(--muted);font-size:.98rem}
+.card span{display:inline-block;margin:0 .35rem .35rem 0;padding:.05rem .55rem;border:1px solid var(--pink);color:var(--pink);font-size:.82rem}
+
+.bars{display:grid;gap:1rem;max-width:36rem}
+.bar2 .row{display:flex;justify-content:space-between;margin-bottom:.3rem}
+.track{height:8px;background:#101a2e;border:1px solid var(--line)}
+.fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--pink));box-shadow:0 0 12px rgba(0,240,255,.6);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+
+form{display:grid;gap:1rem;max-width:34rem}
+label{display:grid;gap:.35rem;color:var(--muted)}
+input,textarea{font:inherit;color:var(--ink);background:var(--panel);border:1px solid var(--line);padding:.7rem .85rem;width:100%}
+input:focus,textarea:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 14px rgba(0,240,255,.3)}
+textarea{min-height:120px;resize:vertical}
+form .btn{justify-self:start}
+#msg{margin:0;min-height:1.5rem;color:#2dff8f}
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+@media print {
+  @page { margin: 0.6in; }
+
+  body {
+    background: #fff !important;
+    color: #111 !important;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  body::after { display: none !important; }
+
+  .nav,
+  .btns,
+  .status,
+  form,
+  #msg,
+  .card span,
+  .fill,
+  .track {
+    display: none !important;
+  }
+
+  .wrap {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+  }
+
+  .hero,
+  section,
+  footer {
+    border-top: 1px solid #888 !important;
+    padding: 1rem 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .hero {
+    padding-top: 0.5rem !important;
+    padding-bottom: 1rem !important;
+  }
+
+  .glitch,
+  .type,
+  h2,
+  .sys dt,
+  .sys dd,
+  .card h3,
+  .card p,
+  .about p,
+  footer {
+    color: #111 !important;
+    text-shadow: none !important;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    display: none !important;
+  }
+
+  .sys,
+  .card {
+    background: #fff !important;
+    border: 1px solid #999 !important;
+    box-shadow: none !important;
+    color: #111 !important;
+  }
+
+  .sys .bar,
+  .sys .bar i {
+    background: transparent !important;
+    border-color: #999 !important;
+  }
+
+  a {
+    color: #111 !important;
+    text-decoration: underline !important;
+  }
+}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top">W.S.S//</a>
+  <nav aria-label="Main"><a href="#profile">Profile</a><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main id="top"><div class="wrap">
+  <div class="hero">
+    <div class="status">System online</div>
+    <h1 class="glitch" data-text="Wyndell Storm Sorongon">Wyndell Storm Sorongon</h1>
+    <p class="type" id="type" aria-label="BSIT 1-D student and aspiring web developer"></p>
+    <div class="btns"><a class="btn solid" href="#projects">View projects</a><a class="btn" href="#contact">Contact me</a></div>
+  </div>
+
+  <section id="profile">
+    <h2>Student profile</h2>
+    <div class="sys">
+      <div class="bar"><i></i><i></i><i></i>profile.sys</div>
+      <dl>
+        <dt>Name</dt><dd>Wyndell Storm Sorongon</dd>
+        <dt>Program</dt><dd>BSIT</dd>
+        <dt>Year & section</dt><dd>1-D</dd>
+        <dt>Focus</dt><dd>Web development</dd>
+      </dl>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <h2>About me</h2>
+    <p>I’m Wyndell Storm Sorongon, a first-year BSIT student in section 1-D who is learning to build websites with HTML, CSS, and JavaScript.</p>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="cards">
+      <article class="card"><h3>Campus Queue</h3><p>A simple queue system for school offices. Sample project: replace with yours.</p><span>HTML</span><span>CSS</span><span>JS</span></article>
+      <article class="card"><h3>Inventory Tracker</h3><p>Add, edit and search items in a small store. Sample project.</p><span>JavaScript</span><span>PHP</span></article>
+      <article class="card"><h3>Weather Dash</h3><p>Shows the forecast for any city with clean icons. Sample project.</p><span>API</span><span>CSS</span></article>
+      <article class="card"><h3>Quiz Arena</h3><p>A timed quiz game with scores and levels. Sample project.</p><span>JavaScript</span><span>Game</span></article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="bars" id="bars"></div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <form id="form">
+      <label>Name<input name="name" required autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Message<textarea name="message" required></textarea></label>
+      <button class="btn solid" type="submit">Send message</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </section>
+</div></main>
+<footer><div class="wrap">© <span id="yr"></span> Wyndell Storm Sorongon · BSIT 1-D</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+const line="> BSIT 1-D // aspiring web developer";
+const t=$("type");
+if(reduce){t.textContent=line}else{let i=0;(function k(){t.textContent=line.slice(0,++i);if(i<line.length)setTimeout(k,55)})()}
+
+const skills=[["HTML & CSS",80],["JavaScript",65],["Python",55],["Databases",45],["Git & GitHub",50]];
+$("bars").innerHTML=skills.map(s=>`<div class="bar2"><div class="row"><span>${s[0]}</span><span>${s[1]}%</span></div><div class="track"><div class="fill" data-w="${s[1]}"></div></div></div>`).join("");
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll(".fill").forEach(f=>f.style.width=f.dataset.w+"%");io.disconnect()}}),{threshold:.3});
+io.observe($("bars"));
+
+$("yr").textContent=new Date().getFullYear();
+$("form").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  location.href=`mailto:you@example.com?subject=${encodeURIComponent("Message from "+f.get("name"))}&body=${encodeURIComponent(f.get("message")+"\n\n"+f.get("email"))}`;
+  $("msg").textContent="Opening your email app…";
+});
+</script>
+</body>
+  </html>
